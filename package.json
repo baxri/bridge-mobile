@@ -24,7 +24,7 @@
     "@react-native-community/google-signin": "^3.0.0",
     "@react-native-community/netinfo": "^3.0.0",
     "autosuggest-highlight": "^3.1.1",
-    "axios": "^0.15.3",
+    "axios": "^0.18.1",
     "formik": "^1.5.8",
     "intropath-core": "git+https://gitlab+deploy-token-90882:T7A__Lr6L--8DDCZjzsu@gitlab.com/intropath/intropath-core.git#v1.0.7",
     "javascript-time-ago": "^2.0.1",
