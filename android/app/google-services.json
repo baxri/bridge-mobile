@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1013514164209",
+    "firebase_url": "https://intropath-170122.firebaseio.com",
+    "project_id": "intropath-170122",
+    "storage_bucket": "intropath-170122.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013514164209:android:90933d1b2bfd9cef",
+        "android_client_info": {
+          "package_name": "com.intropath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013514164209-62h85tr24892229jvsc3nij9e9f77mfv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.intropath",
+            "certificate_hash": "1233f978296cb492a574265a5e8a730765746ff6"
+          }
+        },
+        {
+          "client_id": "1013514164209-4hgsns2o5v8n81l4uv0e1rcpepjmgvhc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+		{
+          "client_id": "1013514164209-68j46iv522o1rsadlt1ikglkodu4u9h2.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1013514164209-qhvng7v6vh9ebd06bbngvkd58ttfprm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5mhDpeNhG4Vn4dzKEHuW-bLQKm7swqTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013514164209-4hgsns2o5v8n81l4uv0e1rcpepjmgvhc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1013514164209-c3mqac0d9u1q4jnft5ltfatjfjqifqb0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.intropath.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,6 @@
+{
+  "rootDir": "../../",
+  "testMatch": ["<rootDir>/tests/detox/**/*.js"],
+  "setupTestFrameworkScriptFile": "<rootDir>/tests/detox/SetupTestFramework.js",
+  "testPathIgnorePatterns": ["<rootDir>/tests/detox/SetupTestFramework.js"]
+}

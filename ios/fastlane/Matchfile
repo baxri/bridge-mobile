@@ -1,0 +1,2 @@
+git_url("git@gitlab.com:intropath/intro-app-certs.git")
+username("tech@brdg.app")

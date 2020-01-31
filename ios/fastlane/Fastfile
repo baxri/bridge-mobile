@@ -1,0 +1,78 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  lane :increment do
+    increment_build_number
+    commit_version_bump(
+      message: "Fastlane IOS: Increment new version to #{lane_context[SharedValues::BUILD_NUMBER]} [ci skip]",
+      xcodeproj: "./IntroPath.xcodeproj",
+      force: true
+    )
+  end
+
+ lane :upload_symbols_beta do
+    upload_symbols(app_identifier: 'brdg.app.beta')
+ end
+
+  lane :upload_symbols_prod do
+    upload_symbols(app_identifier: 'app.beta')
+  end
+
+ lane :upload_symbols do |values|
+   download_dsyms(version: 'latest', app_identifier: values[:app_identifier])
+   upload_symbols_to_sentry(
+     auth_token: '48c7b3ba39f9430a9ed4f990cbed0d08399eac4c04bf4d089232d6d43137cc07',
+     org_slug: 'intropath',
+     project_slug: 'app',
+   )
+   clean_build_artifacts
+ end
+
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    fix_uiwebview
+    ENV["APP_IDENTIFIER"] = "brdg.app.beta"
+    match(type: "appstore") # more information: https://codesigning.guide
+    gym(scheme: "IntroPathBeta") # Build your app - more options available
+    pilot(skip_submission: true, skip_waiting_for_build_processing: true) # Upload to TestFlight and notify testers, skip submission prevents sending the build for external testing review
+    #upload_symbols_beta()
+    clean_build_artifacts
+  end
+
+  desc "Push a new build to TestFlight"
+  lane :production do
+    fix_uiwebview
+    ENV["APP_IDENTIFIER"] = "brdg.app"
+    match(type: "appstore") # more information: https://codesigning.guide
+    gym(scheme: "IntroPathProduction") # Build your app - more options available
+    pilot(skip_submission: true, skip_waiting_for_build_processing: true) # Upload to TestFlight and notify testers, skip submission prevents sending the build for external testing review
+    clean_build_artifacts
+    commit_version_bump(
+      message: "Fastlane IOS: Released new Production build #{lane_context[SharedValues::BUILD_NUMBER]} [ci skip]",
+      xcodeproj: "./IntroPath.xcodeproj",
+      force: true
+    )
+    #upload_symbols_prod()
+  end
+
+  desc "Fix deprecated UIWebView"
+  # More information: https://medium.com/@NumberShapes/uiwebview-app-store-submission-kickback-issue-bb07d77a902
+  private_lane :fix_uiwebview do
+    sh("ruby", "fix-uiwebview.rb")
+  end
+end

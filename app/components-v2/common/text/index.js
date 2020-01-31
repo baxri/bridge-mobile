@@ -1,0 +1,6 @@
+export { default as DisplayText } from './display'
+export { default as HeadingText } from './heading'
+export { default as SubtitleText } from './subtitle'
+export { default as BodyText } from './body'
+export { default as CaptionText } from './caption'
+export { default as OverlineText } from './overline'
